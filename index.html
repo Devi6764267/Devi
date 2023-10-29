@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+		content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+	<title>
+		Build a Survey Form using HTML and CSS
+	</title>
+
+	<style>
+		/* Styling the Body element i.e. Color, 
+		Font, Alignment */ 
+		body {
+            background-image: url("data:image/png;base64,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");
+			background-size: 2000px 1400px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #05c46b;
+			font-family: Verdana;
+			text-align: center;
+		}
+        body h1{
+            font-family: CambridgeSerial Xbold;
+font-size: 90px;
+text-shadow: 5px 5px 10px #05c46b;
+        }
+
+		/* Styling the Form (Color, Padding, Shadow) */
+		form {
+			background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSu3d4LtQw_gphBIzlUeEVuBpRrqQHYzW2gw&usqp=CAU");
+			background-size: cover;
+            max-width: 500px;
+			margin: 50px auto;
+			padding: 30px 20px;
+			box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Styling form-control Class */
+		.form-control {
+			text-align: left;
+			margin-bottom: 20px;
+		}
+
+		/* Styling form-control Label */ 
+		.form-control label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		/* Styling form-control input, 
+		select, textarea */
+		.form-control input,
+		.form-control select,
+		.form-control textarea {
+			border: 1px solid #ffffff;
+			border-radius: 2px;
+			font-family: inherit;
+			padding: 10px;
+			display: block;
+			width: 95%;
+		}
+       
+        .form-control{
+            color: rgb(211, 248, 4);
+        }
+
+		/* Styling form-control Radio 
+		button and Checkbox */
+		.form-control input[type="radio"],
+		.form-control input[type="checkbox"] {
+			display: inline-block;
+			width: auto;
+		}
+
+		/* Styling Button */
+		button {
+			background-color: #05c46b;
+			border: 1px solid #777;
+			border-radius: 2px;
+			font-family: inherit;
+			font-size: 21px;
+			display: block;
+			width: 100%;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1> Survey Form</h1>
+
+	<!-- Create Form -->
+	<form id="form">
+
+		<!-- Details -->
+		<div class="form-control">
+			<label for="name" id="label-name">
+				Name
+			</label>
+
+			<!-- Input Type Text -->
+			<input type="text"
+				id="name"
+				placeholder="Enter your name" />
+		</div>
+
+		<div class="form-control">
+			<label for="email" id="label-email">
+				Email
+			</label>
+
+			<!-- Input Type Email-->
+			<input type="email"
+				id="email"
+				placeholder="Enter your email" />
+		</div>
+
+		<div class="form-control">
+			<label for="age" id="label-age">
+				Age
+			</label>
+
+			<!-- Input Type Text -->
+			<input type="text"
+				id="age"
+				placeholder="Enter your age" />
+		</div>
+
+		<div class="form-control">
+			<label for="role" id="label-role">
+				Which option best describes you?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select name="role" id="role">
+				<option value="student">Student</option>
+				<option value="intern">Intern</option>
+				<option value="professional">
+					Professional
+				</option>
+				<option value="other">Other</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label>
+				Would you recommend GeeksforGeeks 
+				to a friend?
+			</label>
+
+			<!-- Input Type Radio Button -->
+			<label for="recommed-1">
+				<input type="radio"
+					id="recommed-1"
+					name="recommed">Yes</input>
+			</label>
+			<label for="recommed-2">
+				<input type="radio"
+					id="recommed-2"
+					name="recommed">No</input>
+			</label>
+			<label for="recommed-3">
+				<input type="radio"
+					id="recommed-3"
+					name="recommed">Maybe</input>
+			</label>
+		</div>
+
+		<div class="form-control">
+			<label>Languages and Frameworks known 
+				<small>(Check all that apply)</small>
+			</label>
+			<!-- Input Type Checkbox -->
+			<label for="inp-1">
+				<input type="checkbox"
+					name="inp">C</input></label>
+			<label for="inp-2">
+				<input type="checkbox"
+					name="inp">C++</input></label>
+			<label for="inp-3">
+				<input type="checkbox"
+					name="inp">C#</input></label>
+			<label for="inp-4">
+				<input type="checkbox"
+					name="inp">Java</input></label>
+			<label for="inp-5">
+				<input type="checkbox"
+					name="inp">Python</input></label>
+			<label for="inp-6">
+				<input type="checkbox"
+					name="inp">JavaScript</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">React</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">Angular</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">Django</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">Spring</input></label>
+		</div>
+
+		<div class="form-control">
+			<label for="comment">
+				Any comments or suggestions
+			</label>
+
+			<!-- multi-line text input control -->
+			<textarea name="comment" id="comment"
+				placeholder="Enter your comment here">
+			</textarea>
+		</div>
+
+		<!-- Multi-line Text Input Control -->
+		<button type="submit" value="submit">
+			Submit
+		</button>
+        
+	</form>
+ 
+</body>
+</html>
